@@ -1,0 +1,29 @@
+
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+public class Dropper : MonoBehaviour
+{
+    // Start is called before the first frame update
+    MeshRenderer renderer;
+    Rigidbody rigibody;
+    [SerializeField] int timetowait =5;
+    void Start()
+    {
+        renderer = GetComponent<MeshRenderer>(); //caching a reference
+        rigibody = GetComponent<Rigidbody>();
+        
+        rigibody.useGravity = false;
+        renderer.enabled = false;
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        if(Time.time > timetowait)
+        {
+            rigibody.useGravity = true;
+            renderer.enabled = true;
+        }
+    }
+}
